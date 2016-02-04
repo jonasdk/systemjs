@@ -1,5 +1,5 @@
 /*
- * SystemJS v0.19.17
+ * SystemJS v0.19.18
  */
 (function(__global) {
 
@@ -1257,7 +1257,7 @@ function warn(msg) {
     return function(load) {
       var loader = this;
 
-      if (!load.metadata.scriptLoad || (!isBrowser && !isWorker))
+      if (load.metadata.format == 'json' || !load.metadata.scriptLoad || (!isBrowser && !isWorker))
         return fetch.call(this, load);
 
       if (isWorker)
@@ -2030,7 +2030,7 @@ hook('fetch', function(fetch) {
 });System = new SystemJSLoader();
 
 __global.SystemJS = System;
-System.version = '0.19.17 Register Only';
+System.version = '0.19.18 Register Only';
   // -- exporting --
 
   if (typeof exports === 'object')
